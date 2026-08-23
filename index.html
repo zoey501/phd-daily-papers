@@ -1,31 +1,39 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>PhD Daily Papers</title>
-  <style>
-    :root{--bg:#f7f8fb;--card:#fff;--text:#18212f;--muted:#687386;--line:#e5e8ef;--accent:#304ffe;--tag:#eef1ff}
-    *{box-sizing:border-box} body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:var(--bg);color:var(--text)}
-    .wrap{max-width:1040px;margin:auto;padding:38px 22px 70px}.top{display:flex;justify-content:space-between;gap:18px;align-items:flex-end;flex-wrap:wrap}
-    h1{font-size:38px;margin:0 0 6px}.sub{color:var(--muted);margin:0}.date{font-weight:700;color:var(--muted)}
-    .filters{display:flex;gap:8px;flex-wrap:wrap;margin:28px 0}.filter{border:1px solid var(--line);background:white;border-radius:999px;padding:9px 13px;cursor:pointer;font-weight:600}.filter.active{background:var(--text);color:white}
-    .paper{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:25px;margin:18px 0;box-shadow:0 6px 24px rgba(21,32,54,.05)}
-    .meta{font-size:14px;color:var(--muted);margin-bottom:8px}.paper h2{margin:6px 0 10px;font-size:25px;line-height:1.25}.score{display:inline-block;background:#eef9f0;border-radius:999px;padding:6px 10px;font-size:13px;font-weight:700;margin:2px 0 15px}
-    .section{border-top:1px solid var(--line);padding-top:15px;margin-top:15px}.section h3{font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin:0 0 7px}.section p,.section li{line-height:1.55}
-    .tags{display:flex;gap:7px;flex-wrap:wrap;margin-top:16px}.tag{background:var(--tag);padding:6px 9px;border-radius:999px;font-size:13px}.paper a{color:var(--accent);font-weight:700;text-decoration:none}.archive{margin-top:42px}.archive h2{font-size:22px}.small{color:var(--muted);font-size:14px}
-    @media(max-width:650px){h1{font-size:31px}.paper{padding:19px}.paper h2{font-size:21px}}
-  </style>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>PhD Daily Papers</title>
+<style>
+:root{--bg:#f7f8fb;--card:#fff;--text:#18212f;--muted:#687386;--line:#e5e8ef;--accent:#304ffe;--tag:#eef1ff;--saved:#fff4d6}
+*{box-sizing:border-box}body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:var(--bg);color:var(--text)}
+.wrap{max-width:1040px;margin:auto;padding:38px 22px 70px}.top{display:flex;justify-content:space-between;gap:18px;align-items:flex-end;flex-wrap:wrap}
+h1{font-size:38px;margin:0 0 6px}.sub{color:var(--muted);margin:0}.date{font-weight:700;color:var(--muted)}
+.views,.filters{display:flex;gap:8px;flex-wrap:wrap}.views{margin:28px 0 12px}.filters{margin:0 0 25px}.view,.filter{border:1px solid var(--line);background:#fff;border-radius:999px;padding:9px 13px;cursor:pointer;font-weight:650}.view.active,.filter.active{background:var(--text);color:#fff}
+.paper{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:25px;margin:18px 0;box-shadow:0 6px 24px rgba(21,32,54,.05)}
+.paper.saved{border-color:#e5c96d;box-shadow:0 6px 24px rgba(120,95,10,.09)}.paper.read h2{opacity:.72}
+.meta{font-size:14px;color:var(--muted);margin-bottom:8px}.paper h2{margin:6px 0 10px;font-size:25px;line-height:1.25}.score{display:inline-block;background:#eef9f0;border-radius:999px;padding:6px 10px;font-size:13px;font-weight:700;margin:2px 0 12px}
+.actions{display:flex;gap:9px;flex-wrap:wrap;margin:3px 0 15px}.check{display:flex;align-items:center;gap:7px;padding:8px 11px;border:1px solid var(--line);border-radius:10px;background:#fafbfc;font-size:14px;font-weight:650;cursor:pointer}.check input{width:17px;height:17px}.check.pub{background:var(--saved)}
+.section{border-top:1px solid var(--line);padding-top:15px;margin-top:15px}.section h3{font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin:0 0 7px}.section p,.section li{line-height:1.55}.tags{display:flex;gap:7px;flex-wrap:wrap;margin-top:16px}.tag{background:var(--tag);padding:6px 9px;border-radius:999px;font-size:13px}.paper a{color:var(--accent);font-weight:700;text-decoration:none}.empty{display:none;padding:28px;background:#fff;border:1px dashed var(--line);border-radius:16px;color:var(--muted);text-align:center}.day-heading{margin:34px 0 7px;font-size:18px;color:var(--muted)}
+@media(max-width:650px){h1{font-size:31px}.paper{padding:19px}.paper h2{font-size:21px}}
+</style>
 </head>
 <body>
 <div class="wrap">
   <div class="top">
-    <div><h1>🔬 PhD Daily Papers</h1><p class="sub">1–2 papers a day, selected for your research.</p></div>
+    <div><h1>🔬 PhD Daily Papers</h1><p class="sub">Read, save, and build your personal research-paper archive.</p></div>
     <div class="date">23 August 2026</div>
   </div>
 
-  <div class="filters" id="filters">
-    <button class="filter active" data-topic="all">All</button>
+  <div class="views">
+    <button class="view active" data-view="today">Today</button>
+    <button class="view" data-view="archive">Archive</button>
+    <button class="view" data-view="saved">⭐ Useful for publication</button>
+    <button class="view" data-view="unread">Unread</button>
+  </div>
+
+  <div class="filters">
+    <button class="filter active" data-topic="all">All topics</button>
     <button class="filter" data-topic="stress-granules">Stress Granules</button>
     <button class="filter" data-topic="ribosome">Ribosome</button>
     <button class="filter" data-topic="translation">Translation</button>
@@ -36,10 +44,16 @@
   </div>
 
   <main id="papers">
-    <article class="paper" data-topics="stress-granules ribosome translation clem">
+    <div class="day-heading" data-day="2026-08-23">23 August 2026</div>
+
+    <article class="paper" id="paper-pmid-41042876" data-paper-id="pmid-41042876" data-date="2026-08-23" data-topics="stress-granules ribosome translation clem">
       <div class="meta">Science Advances · 2025 · Wu et al.</div>
       <h2>Translation landscape of stress granules</h2>
       <div class="score">Relevance to your PhD: 10/10</div>
+      <div class="actions">
+        <label class="check"><input type="checkbox" data-state="read"> ✓ Read</label>
+        <label class="check pub"><input type="checkbox" data-state="publication"> ⭐ Useful for publication</label>
+      </div>
       <div class="section"><h3>Main question</h3><p>What is the spatial organization and translational state of ribosomal machinery inside stress granules in intact cells?</p></div>
       <div class="section"><h3>Problem solved</h3><p>Stress granules are linked to translational control, but conventional microscopy cannot directly resolve ribosomal complexes inside granules in their native three-dimensional environment.</p></div>
       <div class="section"><h3>Key findings</h3><p>The study used cryogenic correlative light and electron microscopy plus tomography to quantify translational machinery inside stress granules. The results suggest that stress granules have limited impact on global translation regulation but may protect small ribosomal subunits and pre-initiation complexes from degradation.</p></div>
@@ -50,10 +64,14 @@
       <div class="tags"><span class="tag">#StressGranule</span><span class="tag">#Ribosome</span><span class="tag">#Translation</span><span class="tag">#CryoCLEM</span></div>
     </article>
 
-    <article class="paper" data-topics="ribosome ribosome-biogenesis drug">
+    <article class="paper" id="paper-doi-s41467-025-67979-9" data-paper-id="doi-s41467-025-67979-9" data-date="2026-08-23" data-topics="ribosome ribosome-biogenesis drug">
       <div class="meta">Nature Communications · 2025 · Tanaka et al.</div>
       <h2>Ribosome biogenesis as a potential therapeutic target in KRAS mutant colorectal cancer</h2>
       <div class="score">Relevance to your PhD: 8.5/10</div>
+      <div class="actions">
+        <label class="check"><input type="checkbox" data-state="read"> ✓ Read</label>
+        <label class="check pub"><input type="checkbox" data-state="publication"> ⭐ Useful for publication</label>
+      </div>
       <div class="section"><h3>Main question</h3><p>Do cancer cells become dependent on ribosome biogenesis as an adaptive response to KRAS-pathway inhibition?</p></div>
       <div class="section"><h3>Problem solved</h3><p>Resistance and tolerance to targeted KRAS-pathway therapies remain major problems, and the adaptive cellular state supporting survival is incompletely understood.</p></div>
       <div class="section"><h3>Key findings</h3><p>KRAS-pathway inhibition induced a state with enhanced ribosome-biogenesis gene expression in a subset of colorectal cancer cells. These cells became vulnerable to RNA polymerase I inhibition, supporting ribosome biogenesis as a therapeutically exploitable dependency.</p></div>
@@ -65,19 +83,60 @@
     </article>
   </main>
 
-  <section class="archive">
-    <h2>Archive</h2>
-    <p class="small">New daily papers will accumulate here. Topic filters above will work across the archive.</p>
-  </section>
+  <div class="empty" id="empty">No papers match this view yet.</div>
 </div>
 <script>
-  const buttons=[...document.querySelectorAll('.filter')];
-  const papers=[...document.querySelectorAll('.paper')];
-  buttons.forEach(b=>b.addEventListener('click',()=>{
-    buttons.forEach(x=>x.classList.remove('active')); b.classList.add('active');
-    const t=b.dataset.topic;
-    papers.forEach(p=>p.style.display=(t==='all'||p.dataset.topics.split(' ').includes(t))?'block':'none');
-  }));
+const papers=[...document.querySelectorAll('.paper')];
+const views=[...document.querySelectorAll('.view')];
+const filters=[...document.querySelectorAll('.filter')];
+let activeView='today', activeTopic='all';
+const latestDate=Math.max(...papers.map(p=>new Date(p.dataset.date).getTime()));
+const latestDateStr=new Date(latestDate).toISOString().slice(0,10);
+
+function key(id,state){return `phd-papers:${id}:${state}`}
+function restore(){
+  papers.forEach(p=>{
+    const id=p.dataset.paperId;
+    ['read','publication'].forEach(state=>{
+      const box=p.querySelector(`input[data-state="${state}"]`);
+      box.checked=localStorage.getItem(key(id,state))==='1';
+    });
+    paint(p);
+  });
+}
+function paint(p){
+  p.classList.toggle('read',p.querySelector('[data-state="read"]').checked);
+  p.classList.toggle('saved',p.querySelector('[data-state="publication"]').checked);
+}
+function apply(){
+  let shown=0;
+  papers.forEach(p=>{
+    const read=p.querySelector('[data-state="read"]').checked;
+    const saved=p.querySelector('[data-state="publication"]').checked;
+    const topicOK=activeTopic==='all'||p.dataset.topics.split(' ').includes(activeTopic);
+    let viewOK=true;
+    if(activeView==='today') viewOK=p.dataset.date===latestDateStr;
+    if(activeView==='saved') viewOK=saved;
+    if(activeView==='unread') viewOK=!read;
+    if(activeView==='archive') viewOK=true;
+    const yes=topicOK&&viewOK;
+    p.style.display=yes?'block':'none'; if(yes) shown++;
+  });
+  document.querySelectorAll('.day-heading').forEach(h=>{
+    const any=[...document.querySelectorAll(`.paper[data-date="${h.dataset.day}"]`)].some(p=>p.style.display!=='none');
+    h.style.display=any?'block':'none';
+  });
+  document.getElementById('empty').style.display=shown?'none':'block';
+}
+
+document.addEventListener('change',e=>{
+  if(!e.target.matches('input[data-state]')) return;
+  const p=e.target.closest('.paper'),id=p.dataset.paperId,state=e.target.dataset.state;
+  localStorage.setItem(key(id,state),e.target.checked?'1':'0');paint(p);apply();
+});
+views.forEach(b=>b.addEventListener('click',()=>{views.forEach(x=>x.classList.remove('active'));b.classList.add('active');activeView=b.dataset.view;apply()}));
+filters.forEach(b=>b.addEventListener('click',()=>{filters.forEach(x=>x.classList.remove('active'));b.classList.add('active');activeTopic=b.dataset.topic;apply()}));
+restore();apply();
 </script>
 </body>
 </html>
