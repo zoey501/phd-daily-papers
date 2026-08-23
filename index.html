@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>PhD Daily Papers</title>
+  <style>
+    :root{--bg:#f7f8fb;--card:#fff;--text:#18212f;--muted:#687386;--line:#e5e8ef;--accent:#304ffe;--tag:#eef1ff}
+    *{box-sizing:border-box} body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:var(--bg);color:var(--text)}
+    .wrap{max-width:1040px;margin:auto;padding:38px 22px 70px}.top{display:flex;justify-content:space-between;gap:18px;align-items:flex-end;flex-wrap:wrap}
+    h1{font-size:38px;margin:0 0 6px}.sub{color:var(--muted);margin:0}.date{font-weight:700;color:var(--muted)}
+    .filters{display:flex;gap:8px;flex-wrap:wrap;margin:28px 0}.filter{border:1px solid var(--line);background:white;border-radius:999px;padding:9px 13px;cursor:pointer;font-weight:600}.filter.active{background:var(--text);color:white}
+    .paper{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:25px;margin:18px 0;box-shadow:0 6px 24px rgba(21,32,54,.05)}
+    .meta{font-size:14px;color:var(--muted);margin-bottom:8px}.paper h2{margin:6px 0 10px;font-size:25px;line-height:1.25}.score{display:inline-block;background:#eef9f0;border-radius:999px;padding:6px 10px;font-size:13px;font-weight:700;margin:2px 0 15px}
+    .section{border-top:1px solid var(--line);padding-top:15px;margin-top:15px}.section h3{font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin:0 0 7px}.section p,.section li{line-height:1.55}
+    .tags{display:flex;gap:7px;flex-wrap:wrap;margin-top:16px}.tag{background:var(--tag);padding:6px 9px;border-radius:999px;font-size:13px}.paper a{color:var(--accent);font-weight:700;text-decoration:none}.archive{margin-top:42px}.archive h2{font-size:22px}.small{color:var(--muted);font-size:14px}
+    @media(max-width:650px){h1{font-size:31px}.paper{padding:19px}.paper h2{font-size:21px}}
+  </style>
+</head>
+<body>
+<div class="wrap">
+  <div class="top">
+    <div><h1>🔬 PhD Daily Papers</h1><p class="sub">1–2 papers a day, selected for your research.</p></div>
+    <div class="date">23 August 2026</div>
+  </div>
+
+  <div class="filters" id="filters">
+    <button class="filter active" data-topic="all">All</button>
+    <button class="filter" data-topic="stress-granules">Stress Granules</button>
+    <button class="filter" data-topic="ribosome">Ribosome</button>
+    <button class="filter" data-topic="translation">Translation</button>
+    <button class="filter" data-topic="ribosome-biogenesis">Ribosome Biogenesis</button>
+    <button class="filter" data-topic="drug">Drugs</button>
+    <button class="filter" data-topic="clem">CLEM</button>
+    <button class="filter" data-topic="nuclear-speckles">Nuclear Speckles</button>
+  </div>
+
+  <main id="papers">
+    <article class="paper" data-topics="stress-granules ribosome translation clem">
+      <div class="meta">Science Advances · 2025 · Wu et al.</div>
+      <h2>Translation landscape of stress granules</h2>
+      <div class="score">Relevance to your PhD: 10/10</div>
+      <div class="section"><h3>Main question</h3><p>What is the spatial organization and translational state of ribosomal machinery inside stress granules in intact cells?</p></div>
+      <div class="section"><h3>Problem solved</h3><p>Stress granules are linked to translational control, but conventional microscopy cannot directly resolve ribosomal complexes inside granules in their native three-dimensional environment.</p></div>
+      <div class="section"><h3>Key findings</h3><p>The study used cryogenic correlative light and electron microscopy plus tomography to quantify translational machinery inside stress granules. The results suggest that stress granules have limited impact on global translation regulation but may protect small ribosomal subunits and pre-initiation complexes from degradation.</p></div>
+      <div class="section"><h3>Why it matters to your research</h3><p>This directly connects stress granules, ribosomes, translation and cryo-CLEM. It is especially useful for thinking about whether drug-induced granules contain canonical 40S/pre-initiation machinery or an unusual ribosome composition.</p></div>
+      <div class="section"><h3>What you can learn / use</h3><ul><li>Cryo-CLEM targeting strategy for stress granules.</li><li>Tomographic analysis of ribosomal particles inside versus outside granules.</li><li>A framework for comparing SG composition rather than scoring only SG-positive cells.</li><li>Useful conceptual control for 40S versus 60S enrichment.</li></ul></div>
+      <div class="section"><h3>Experiment idea</h3><p>For drug-induced SGs with strong RPL7 enrichment, compare canonical arsenite SGs with the drug condition using both a 40S marker and a 60S marker, then ask whether the ribosomal composition predicts translation inhibition.</p></div>
+      <a href="https://pubmed.ncbi.nlm.nih.gov/41042876/" target="_blank" rel="noreferrer">Open paper →</a>
+      <div class="tags"><span class="tag">#StressGranule</span><span class="tag">#Ribosome</span><span class="tag">#Translation</span><span class="tag">#CryoCLEM</span></div>
+    </article>
+
+    <article class="paper" data-topics="ribosome ribosome-biogenesis drug">
+      <div class="meta">Nature Communications · 2025 · Tanaka et al.</div>
+      <h2>Ribosome biogenesis as a potential therapeutic target in KRAS mutant colorectal cancer</h2>
+      <div class="score">Relevance to your PhD: 8.5/10</div>
+      <div class="section"><h3>Main question</h3><p>Do cancer cells become dependent on ribosome biogenesis as an adaptive response to KRAS-pathway inhibition?</p></div>
+      <div class="section"><h3>Problem solved</h3><p>Resistance and tolerance to targeted KRAS-pathway therapies remain major problems, and the adaptive cellular state supporting survival is incompletely understood.</p></div>
+      <div class="section"><h3>Key findings</h3><p>KRAS-pathway inhibition induced a state with enhanced ribosome-biogenesis gene expression in a subset of colorectal cancer cells. These cells became vulnerable to RNA polymerase I inhibition, supporting ribosome biogenesis as a therapeutically exploitable dependency.</p></div>
+      <div class="section"><h3>Why it matters to your research</h3><p>It connects anticancer treatment with induced dependence on ribosome production and gives you a useful framework for studying drugs that perturb nucleolar function or ribosome synthesis.</p></div>
+      <div class="section"><h3>What you can learn / use</h3><ul><li>Think about ribosome biogenesis as an adaptive drug-response state, not only a constitutive cancer phenotype.</li><li>Use nucleolar/ribosome-biogenesis markers alongside cell-stress and translation readouts.</li><li>Consider combination-treatment logic: pathway inhibition plus ribosome-biogenesis inhibition.</li></ul></div>
+      <div class="section"><h3>Experiment idea</h3><p>For your strongest SG-inducing anticancer drugs, ask whether nucleolar morphology or NPM1 localization changes together with SG formation and whether this correlates with translation inhibition.</p></div>
+      <a href="https://www.nature.com/articles/s41467-025-67979-9" target="_blank" rel="noreferrer">Open paper →</a>
+      <div class="tags"><span class="tag">#RibosomeBiogenesis</span><span class="tag">#Cancer</span><span class="tag">#DrugMechanism</span></div>
+    </article>
+  </main>
+
+  <section class="archive">
+    <h2>Archive</h2>
+    <p class="small">New daily papers will accumulate here. Topic filters above will work across the archive.</p>
+  </section>
+</div>
+<script>
+  const buttons=[...document.querySelectorAll('.filter')];
+  const papers=[...document.querySelectorAll('.paper')];
+  buttons.forEach(b=>b.addEventListener('click',()=>{
+    buttons.forEach(x=>x.classList.remove('active')); b.classList.add('active');
+    const t=b.dataset.topic;
+    papers.forEach(p=>p.style.display=(t==='all'||p.dataset.topics.split(' ').includes(t))?'block':'none');
+  }));
+</script>
+</body>
+</html>
