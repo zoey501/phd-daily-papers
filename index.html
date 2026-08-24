@@ -22,7 +22,7 @@ h1{font-size:38px;margin:0 0 6px}.sub{color:var(--muted);margin:0}.date{font-wei
 <div class="wrap">
   <div class="top">
     <div><h1>🔬 PhD Daily Papers</h1><p class="sub">Read, save, and build your personal research-paper archive.</p></div>
-    <div class="date">23 August 2026</div>
+    <div class="date">24 August 2026</div>
   </div>
 
   <div class="views">
@@ -44,6 +44,44 @@ h1{font-size:38px;margin:0 0 6px}.sub{color:var(--muted);margin:0}.date{font-wei
   </div>
 
   <main id="papers">
+    <div class="day-heading" data-day="2026-08-24">24 August 2026</div>
+
+    <article class="paper" id="paper-pmid-42524886" data-paper-id="pmid-42524886" data-date="2026-08-24" data-topics="stress-granules translation drug">
+      <div class="meta">Journal of Cell Biology · 2026 · Tereshchenko et al.</div>
+      <h2>PARP1 hyperactivity stalls translation and triggers stress granule formation following DNA damage</h2>
+      <div class="score">Relevance to your PhD: 9.8/10</div>
+      <div class="actions">
+        <label class="check"><input type="checkbox" data-state="read"> ✓ Read</label>
+        <label class="check pub"><input type="checkbox" data-state="publication"> ⭐ Useful for publication</label>
+      </div>
+      <div class="section"><h3>Main question</h3><p>How does a nuclear DNA-damage signal become a cytoplasmic translation-arrest and stress-granule response?</p></div>
+      <div class="section"><h3>Problem solved</h3><p>Genotoxic agents can induce stress granules, but the signaling chain linking nuclear damage sensing to translation inhibition and SG assembly was unclear.</p></div>
+      <div class="section"><h3>Key findings</h3><p>DNA damage activates PARP1, which consumes NAD+ and lowers cellular ATP. Energy loss activates AMPK, inhibits mTORC1 through Raptor phosphorylation, promotes 4EBP1 hypophosphorylation, stalls translation and drives SG formation. Manipulating PAR metabolism or replenishing NAD+ suppresses these effects. G3BP1/2-deficient cells are less viable after genotoxic stress, supporting a protective role for the resulting SGs.</p></div>
+      <div class="section"><h3>Why it matters to your research</h3><p>This is a useful mechanistic comparison for drug-induced SGs because it separates an eIF2α-independent route from a defined mTORC1/4EBP1-dependent route. It also directly links SG formation to cell survival, which is especially valuable when relating SG kinetics to your cytotoxicity readout.</p></div>
+      <div class="section"><h3>What you can learn / use</h3><ul><li>Measure p-AMPK, phospho-Raptor, phospho-4EBP1 and p-eIF2α together to distinguish signaling routes.</li><li>Use NAD+/ATP depletion or rescue as a mechanistic test rather than relying only on SG morphology.</li><li>Compare wild-type versus G3BP1/2-deficient backgrounds when asking whether SGs protect cells from death.</li><li>For live-cell analysis, align SG onset with later cytotoxicity at the single-cell level to test whether early SG formation predicts survival.</li></ul></div>
+      <div class="section"><h3>Experiment idea</h3><p>For one strong drug-induced SG condition, quantify SG onset, Cytotox positivity and translation inhibition over time, then add p-AMPK/p-4EBP1 endpoint measurements. If SG-positive cells systematically die later or survive longer than SG-negative cells, compare that relationship with the PARP1-driven model.</p></div>
+      <a href="https://pubmed.ncbi.nlm.nih.gov/42524886/" target="_blank" rel="noreferrer">Open paper →</a>
+      <div class="tags"><span class="tag">#StressGranule</span><span class="tag">#Translation</span><span class="tag">#PARP1</span><span class="tag">#mTORC1</span><span class="tag">#CellDeath</span></div>
+    </article>
+
+    <article class="paper" id="paper-pmid-41735331" data-paper-id="pmid-41735331" data-date="2026-08-24" data-topics="ribosome translation drug">
+      <div class="meta">Nature Communications · 2026 · Diamond et al.</div>
+      <h2>Context-dependent translation inhibition as a cancer therapeutic modality</h2>
+      <div class="score">Relevance to your PhD: 9.6/10</div>
+      <div class="actions">
+        <label class="check"><input type="checkbox" data-state="read"> ✓ Read</label>
+        <label class="check pub"><input type="checkbox" data-state="publication"> ⭐ Useful for publication</label>
+      </div>
+      <div class="section"><h3>Main question</h3><p>Can small molecules be designed to bind the human ribosomal peptidyl-transferase center and inhibit translation only in particular nascent-chain sequence contexts, rather than indiscriminately blocking protein synthesis?</p></div>
+      <div class="section"><h3>Problem solved</h3><p>Human translation inhibitors are potentially powerful anticancer agents but broad inhibition creates toxicity. Context-dependent inhibition was known for some bacterial ribosome-targeting antibiotics but had not been established as a designed therapeutic strategy for the human ribosome.</p></div>
+      <div class="section"><h3>Key findings</h3><p>The authors designed PTC-binding compounds called interdictors whose interactions depend on the nascent peptide sequence. Ribosome profiling identified drug-specific pause signatures, and cryo-EM captured interactions among compound, nascent chain and rRNA. Different inhibitors produced different effects on ribosome-surveillance pathways including the ribotoxic stress response, and an optimized compound showed antitumor activity in a triple-negative breast-cancer xenograft model.</p></div>
+      <div class="section"><h3>Why it matters to your research</h3><p>This paper is directly relevant to a screen of ribosome-targeting and anticancer drugs because it shows that 'translation inhibition' is not a single mechanism: two compounds binding the same functional region can create different stall contexts and different downstream ribosome-stress responses. That could help explain why drugs with similar effects on protein synthesis do not necessarily produce the same SG phenotype.</p></div>
+      <div class="section"><h3>What you can learn / use</h3><ul><li>Ribosome profiling can distinguish global translation loss from sequence-specific elongation stalls.</li><li>Use anisomycin or another characterized PTC inhibitor as a mechanistic comparator when appropriate.</li><li>Pair translation measurements with RSR/collision markers rather than assuming every inhibitor activates the same surveillance pathway.</li><li>Cryo-EM structures provide a way to connect drug-binding mode to pausing and downstream phenotype.</li></ul></div>
+      <div class="section"><h3>Experiment idea</h3><p>Take two drugs from your screen that produce similar bulk puromycin inhibition but very different SG responses. Compare SG formation with ribosome-collision/RSR markers; if they diverge, it would support the idea that the type of elongation stall, not simply the amount of translation inhibition, determines the stress response.</p></div>
+      <a href="https://pubmed.ncbi.nlm.nih.gov/41735331/" target="_blank" rel="noreferrer">Open paper →</a>
+      <div class="tags"><span class="tag">#Ribosome</span><span class="tag">#Translation</span><span class="tag">#DrugMechanism</span><span class="tag">#RibosomeProfiling</span><span class="tag">#CryoEM</span><span class="tag">#RSR</span></div>
+    </article>
+
     <div class="day-heading" data-day="2026-08-23">23 August 2026</div>
 
     <article class="paper" id="paper-pmid-41042876" data-paper-id="pmid-41042876" data-date="2026-08-23" data-topics="stress-granules ribosome translation clem">
