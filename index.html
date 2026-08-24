@@ -2,179 +2,147 @@
 <html lang="en">
 <head>
 <meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>PhD Daily Papers</title>
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>PhD Research Workbench</title>
 <style>
-:root{--bg:#f7f8fb;--card:#fff;--text:#18212f;--muted:#687386;--line:#e5e8ef;--accent:#304ffe;--tag:#eef1ff;--saved:#fff4d6}
-*{box-sizing:border-box}body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:var(--bg);color:var(--text)}
-.wrap{max-width:1040px;margin:auto;padding:38px 22px 70px}.top{display:flex;justify-content:space-between;gap:18px;align-items:flex-end;flex-wrap:wrap}
-h1{font-size:38px;margin:0 0 6px}.sub{color:var(--muted);margin:0}.date{font-weight:700;color:var(--muted)}
-.views,.filters{display:flex;gap:8px;flex-wrap:wrap}.views{margin:28px 0 12px}.filters{margin:0 0 25px}.view,.filter{border:1px solid var(--line);background:#fff;border-radius:999px;padding:9px 13px;cursor:pointer;font-weight:650}.view.active,.filter.active{background:var(--text);color:#fff}
-.paper{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:25px;margin:18px 0;box-shadow:0 6px 24px rgba(21,32,54,.05)}
-.paper.saved{border-color:#e5c96d;box-shadow:0 6px 24px rgba(120,95,10,.09)}.paper.read h2{opacity:.72}
-.meta{font-size:14px;color:var(--muted);margin-bottom:8px}.paper h2{margin:6px 0 10px;font-size:25px;line-height:1.25}.score{display:inline-block;background:#eef9f0;border-radius:999px;padding:6px 10px;font-size:13px;font-weight:700;margin:2px 0 12px}
-.actions{display:flex;gap:9px;flex-wrap:wrap;margin:3px 0 15px}.check{display:flex;align-items:center;gap:7px;padding:8px 11px;border:1px solid var(--line);border-radius:10px;background:#fafbfc;font-size:14px;font-weight:650;cursor:pointer}.check input{width:17px;height:17px}.check.pub{background:var(--saved)}
-.section{border-top:1px solid var(--line);padding-top:15px;margin-top:15px}.section h3{font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin:0 0 7px}.section p,.section li{line-height:1.55}.tags{display:flex;gap:7px;flex-wrap:wrap;margin-top:16px}.tag{background:var(--tag);padding:6px 9px;border-radius:999px;font-size:13px}.paper a{color:var(--accent);font-weight:700;text-decoration:none}.empty{display:none;padding:28px;background:#fff;border:1px dashed var(--line);border-radius:16px;color:var(--muted);text-align:center}.day-heading{margin:34px 0 7px;font-size:18px;color:var(--muted)}
-@media(max-width:650px){h1{font-size:31px}.paper{padding:19px}.paper h2{font-size:21px}}
+:root{--bg:#f5f7fb;--card:#fff;--text:#172033;--muted:#697386;--line:#e3e7ef;--accent:#405cf5;--soft:#eef1ff;--green:#eaf8ef;--yellow:#fff5d9;--red:#fff0ef;--shadow:0 8px 28px rgba(28,39,65,.07)}
+*{box-sizing:border-box}body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;background:var(--bg);color:var(--text)}button,input,textarea,select{font:inherit}.app{display:grid;grid-template-columns:230px minmax(0,1fr);min-height:100vh}.side{background:#111827;color:#fff;padding:28px 18px;position:sticky;top:0;height:100vh}.brand{font-weight:800;font-size:21px;margin:0 8px 26px}.brand small{display:block;color:#9ca3af;font-weight:500;font-size:12px;margin-top:6px}.nav{display:grid;gap:7px}.nav button{border:0;background:transparent;color:#cbd5e1;text-align:left;padding:11px 12px;border-radius:10px;cursor:pointer;font-weight:650}.nav button:hover,.nav button.active{background:#263247;color:#fff}.content{max-width:1180px;width:100%;padding:34px 34px 70px;margin:0 auto}.page{display:none}.page.active{display:block}.top{display:flex;justify-content:space-between;gap:20px;align-items:flex-start;margin-bottom:25px}.eyebrow{color:var(--accent);font-weight:800;font-size:12px;text-transform:uppercase;letter-spacing:.08em}.top h1{font-size:34px;margin:5px 0 5px}.muted{color:var(--muted)}.grid{display:grid;grid-template-columns:repeat(12,1fr);gap:18px}.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:20px;box-shadow:var(--shadow)}.span12{grid-column:span 12}.span8{grid-column:span 8}.span7{grid-column:span 7}.span6{grid-column:span 6}.span5{grid-column:span 5}.span4{grid-column:span 4}.card h2{font-size:18px;margin:0 0 14px}.card h3{font-size:14px;margin:18px 0 8px}.goal{font-size:22px;font-weight:750;line-height:1.35;border:0;width:100%;resize:none;outline:0;color:var(--text);background:transparent}.task{display:flex;align-items:flex-start;gap:10px;padding:9px 0;border-bottom:1px solid #f0f2f6}.task:last-child{border-bottom:0}.task input[type=checkbox]{width:18px;height:18px;margin-top:2px}.task input[type=text]{border:0;outline:0;width:100%;background:transparent}.btn{border:1px solid var(--line);background:#fff;border-radius:10px;padding:9px 12px;cursor:pointer;font-weight:700}.btn.primary{background:var(--accent);border-color:var(--accent);color:#fff}.btn.small{padding:6px 9px;font-size:13px}.btn.danger{color:#b42318}.row{display:flex;gap:9px;align-items:center;flex-wrap:wrap}.space{justify-content:space-between}.field{display:grid;gap:6px;margin:10px 0}.field label{font-size:12px;font-weight:750;color:var(--muted);text-transform:uppercase;letter-spacing:.04em}.field input,.field textarea,.field select,.search{width:100%;border:1px solid var(--line);border-radius:10px;padding:10px 11px;background:#fff;outline:0}.field textarea{min-height:90px;resize:vertical}.note{width:100%;min-height:150px;border:0;outline:0;resize:vertical;background:#fbfcfe;border-radius:10px;padding:12px;line-height:1.5}.pill{display:inline-flex;align-items:center;border-radius:999px;padding:5px 9px;font-size:12px;font-weight:750;background:var(--soft)}.pill.done{background:var(--green)}.pill.running{background:var(--yellow)}.pill.problem{background:var(--red)}.progress{height:9px;background:#edf0f5;border-radius:999px;overflow:hidden}.progress>div{height:100%;background:var(--accent);width:0}.stat{font-size:28px;font-weight:800}.table-wrap{overflow:auto}table{width:100%;border-collapse:collapse;min-width:700px}th,td{text-align:left;padding:11px 9px;border-bottom:1px solid var(--line);font-size:14px}th{color:var(--muted);font-size:12px;text-transform:uppercase;letter-spacing:.04em}.linkbtn{border:0;background:none;color:var(--accent);font-weight:750;cursor:pointer;padding:0}.empty{padding:24px;text-align:center;color:var(--muted);border:1px dashed var(--line);border-radius:12px}.paper{padding:16px 0;border-bottom:1px solid var(--line)}.paper:last-child{border-bottom:0}.paper h3{font-size:17px;margin:5px 0 8px}.paper a{color:var(--accent);font-weight:750;text-decoration:none}.paper-actions{display:flex;gap:12px;flex-wrap:wrap;font-size:13px;margin-top:10px}.review textarea{min-height:80px}.exp-detail{display:none;margin-top:18px;padding-top:18px;border-top:1px solid var(--line)}.exp-detail.open{display:block}.tag{display:inline-block;padding:4px 8px;background:#f1f3f7;border-radius:999px;font-size:12px;margin:3px}.banner{padding:12px 14px;background:#eef6ff;border:1px solid #d7e8ff;border-radius:12px;color:#27436b;font-size:13px;line-height:1.45}.kbd{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;background:#edf0f4;padding:2px 6px;border-radius:5px}.mobile-nav{display:none}
+@media(max-width:850px){.app{display:block}.side{height:auto;position:static;padding:16px}.brand{margin:0 0 12px}.nav{display:flex;overflow:auto}.nav button{white-space:nowrap}.content{padding:22px 16px 60px}.span8,.span7,.span6,.span5,.span4{grid-column:span 12}.top h1{font-size:28px}}
 </style>
 </head>
 <body>
-<div class="wrap">
-  <div class="top">
-    <div><h1>🔬 PhD Daily Papers</h1><p class="sub">Read, save, and build your personal research-paper archive.</p></div>
-    <div class="date">24 August 2026</div>
+<div class="app">
+<aside class="side">
+  <div class="brand">🔬 Research Bench<small>PhD workbench · version 1</small></div>
+  <nav class="nav">
+    <button class="active" data-page="today">🏠 Today</button>
+    <button data-page="week">📅 This Week</button>
+    <button data-page="experiments">🧪 Experiments</button>
+    <button data-page="papers">📚 Papers</button>
+    <button data-page="review">🧠 Weekly Review</button>
+  </nav>
+</aside>
+<main class="content">
+
+<section class="page active" id="today">
+  <div class="top"><div><div class="eyebrow" id="todayDate"></div><h1>Today</h1><div class="muted">Open this page first. Keep today small and executable.</div></div><button class="btn" id="exportBtn">Export backup</button></div>
+  <div class="grid">
+    <div class="card span8"><h2>🎯 Main goal today</h2><textarea id="dailyGoal" class="goal" rows="2" placeholder="What is the one outcome that would make today useful?"></textarea></div>
+    <div class="card span4"><h2>Week progress</h2><div class="stat" id="weekPct">0%</div><div class="progress"><div id="progressBar"></div></div><div class="muted" style="margin-top:8px" id="progressText">0 of 0 tasks completed</div></div>
+    <div class="card span7"><div class="row space"><h2>✅ Today's checklist</h2><button class="btn small" id="addDailyTask">+ Task</button></div><div id="dailyTasks"></div></div>
+    <div class="card span5"><h2>🧪 Active experiments</h2><div id="activeExperiments"></div><div style="margin-top:12px"><button class="btn small" data-jump="experiments">Open experiment library →</button></div></div>
+    <div class="card span7"><h2>📝 Quick lab notes</h2><textarea id="dailyNotes" class="note" placeholder="Fast notes while working: observations, parameter changes, unexpected results, questions..."></textarea><div class="muted" style="font-size:12px;margin-top:7px">Saved automatically on this device.</div></div>
+    <div class="card span5"><h2>📖 Today's paper</h2><div id="todayPaper"></div><button class="btn small" data-jump="papers">Paper archive →</button></div>
+    <div class="card span6"><h2>💡 What did I learn today?</h2><textarea id="learnedToday" class="note" style="min-height:105px" placeholder="One useful result, concept, or conclusion..."></textarea></div>
+    <div class="card span6"><h2>❓ Problem / next question</h2><textarea id="problemToday" class="note" style="min-height:105px" placeholder="What is blocking you, or what should tomorrow start with?"></textarea></div>
   </div>
+</section>
 
-  <div class="views">
-    <button class="view active" data-view="today">Today</button>
-    <button class="view" data-view="archive">Archive</button>
-    <button class="view" data-view="saved">⭐ Useful for publication</button>
-    <button class="view" data-view="unread">Unread</button>
+<section class="page" id="week">
+  <div class="top"><div><div class="eyebrow" id="weekRange"></div><h1>This Week</h1><div class="muted">Plan around a scientific question, not around being busy.</div></div><button class="btn primary" id="archiveWeek">Archive this week</button></div>
+  <div class="grid">
+    <div class="card span12"><h2>🔬 Main scientific question</h2><textarea id="weekQuestion" class="goal" rows="2" placeholder="What scientific question should this week move forward?"></textarea></div>
+    <div class="card span7"><div class="row space"><h2>Three important outcomes</h2><button class="btn small" id="addWeekTask">+ Outcome</button></div><div id="weekTasks"></div></div>
+    <div class="card span5"><h2>Why this week matters</h2><textarea id="weekWhy" class="note" placeholder="How does this connect to the larger PhD story?"></textarea></div>
+    <div class="card span12"><h2>Weekly bench plan</h2><div class="banner">Use this for scientific work. Keep fixed appointments and microscope bookings in Google Calendar.</div><div class="grid" style="margin-top:14px" id="dayPlans"></div></div>
+    <div class="card span12"><h2>📦 Past weeks</h2><div id="weekArchive"></div></div>
   </div>
+</section>
 
-  <div class="filters">
-    <button class="filter active" data-topic="all">All topics</button>
-    <button class="filter" data-topic="stress-granules">Stress Granules</button>
-    <button class="filter" data-topic="ribosome">Ribosome</button>
-    <button class="filter" data-topic="translation">Translation</button>
-    <button class="filter" data-topic="ribosome-biogenesis">Ribosome Biogenesis</button>
-    <button class="filter" data-topic="drug">Drugs</button>
-    <button class="filter" data-topic="clem">CLEM</button>
-    <button class="filter" data-topic="nuclear-speckles">Nuclear Speckles</button>
+<section class="page" id="experiments">
+  <div class="top"><div><div class="eyebrow">Scientific memory</div><h1>Experiments</h1><div class="muted">Every meaningful experiment gets an ID, searchable result and conclusion.</div></div><button class="btn primary" id="newExperiment">+ New experiment</button></div>
+  <div class="card">
+    <div class="row" style="margin-bottom:14px"><input id="expSearch" class="search" placeholder="Search ID, drug, cell line, method, result, project..." style="flex:1;min-width:230px"><select id="expFilter" class="search" style="width:auto"><option value="all">All status</option><option>Planned</option><option>Running</option><option>Analysis</option><option>Done</option><option>Problem</option></select></div>
+    <div id="experimentList"></div>
   </div>
+  <div class="card" id="experimentForm" style="display:none;margin-top:18px">
+    <div class="row space"><h2 id="expFormTitle">New experiment</h2><button class="btn small" id="cancelExperiment">Close</button></div>
+    <div class="grid">
+      <div class="field span6"><label>Title</label><input id="eTitle" placeholder="e.g. Incucyte — Drug A dose response"></div>
+      <div class="field span3"><label>Date</label><input id="eDate" type="date"></div>
+      <div class="field span3"><label>Status</label><select id="eStatus"><option>Planned</option><option>Running</option><option>Analysis</option><option>Done</option><option>Problem</option></select></div>
+      <div class="field span4"><label>Project</label><input id="eProject" placeholder="e.g. SG & cell death"></div>
+      <div class="field span4"><label>Method</label><input id="eMethod" placeholder="Incucyte / IF / WB / Cryo-ET"></div>
+      <div class="field span4"><label>Cells / sample</label><input id="eCells" placeholder="e.g. U2OS G3BP1-GFP"></div>
+      <div class="field span6"><label>Question</label><textarea id="eQuestion"></textarea></div>
+      <div class="field span6"><label>Conditions</label><textarea id="eConditions" placeholder="Drug, dose, time, controls..."></textarea></div>
+      <div class="field span6"><label>Result / observation</label><textarea id="eResult"></textarea></div>
+      <div class="field span6"><label>Conclusion / next step</label><textarea id="eConclusion"></textarea></div>
+      <div class="field span12"><label>File / folder path or link</label><input id="eFiles" placeholder="Paste Dropbox/cluster/folder path or URL"></div>
+    </div>
+    <button class="btn primary" id="saveExperiment">Save experiment</button>
+  </div>
+</section>
 
-  <main id="papers">
-    <div class="day-heading" data-day="2026-08-24">24 August 2026</div>
+<section class="page" id="papers">
+  <div class="top"><div><div class="eyebrow">Knowledge</div><h1>Papers</h1><div class="muted">Read less randomly: save papers by how they can change your experiments or thesis.</div></div></div>
+  <div class="grid">
+    <div class="card span8"><h2>Paper archive</h2><div id="paperList"></div></div>
+    <div class="card span4"><h2>How to use this</h2><p class="muted" style="line-height:1.6">Mark a paper <b>Read</b> only after you can state its main message. Mark <b>⭐ Thesis</b> if you expect to cite or reuse it. Put one concrete experimental idea in your notes when a paper changes what you want to test.</p></div>
+  </div>
+</section>
 
-    <article class="paper" id="paper-pmid-42524886" data-paper-id="pmid-42524886" data-date="2026-08-24" data-topics="stress-granules translation drug">
-      <div class="meta">Journal of Cell Biology · 2026 · Tereshchenko et al.</div>
-      <h2>PARP1 hyperactivity stalls translation and triggers stress granule formation following DNA damage</h2>
-      <div class="score">Relevance to your PhD: 9.8/10</div>
-      <div class="actions">
-        <label class="check"><input type="checkbox" data-state="read"> ✓ Read</label>
-        <label class="check pub"><input type="checkbox" data-state="publication"> ⭐ Useful for publication</label>
-      </div>
-      <div class="section"><h3>Main question</h3><p>How does a nuclear DNA-damage signal become a cytoplasmic translation-arrest and stress-granule response?</p></div>
-      <div class="section"><h3>Problem solved</h3><p>Genotoxic agents can induce stress granules, but the signaling chain linking nuclear damage sensing to translation inhibition and SG assembly was unclear.</p></div>
-      <div class="section"><h3>Key findings</h3><p>DNA damage activates PARP1, which consumes NAD+ and lowers cellular ATP. Energy loss activates AMPK, inhibits mTORC1 through Raptor phosphorylation, promotes 4EBP1 hypophosphorylation, stalls translation and drives SG formation. Manipulating PAR metabolism or replenishing NAD+ suppresses these effects. G3BP1/2-deficient cells are less viable after genotoxic stress, supporting a protective role for the resulting SGs.</p></div>
-      <div class="section"><h3>Why it matters to your research</h3><p>This is a useful mechanistic comparison for drug-induced SGs because it separates an eIF2α-independent route from a defined mTORC1/4EBP1-dependent route. It also directly links SG formation to cell survival, which is especially valuable when relating SG kinetics to your cytotoxicity readout.</p></div>
-      <div class="section"><h3>What you can learn / use</h3><ul><li>Measure p-AMPK, phospho-Raptor, phospho-4EBP1 and p-eIF2α together to distinguish signaling routes.</li><li>Use NAD+/ATP depletion or rescue as a mechanistic test rather than relying only on SG morphology.</li><li>Compare wild-type versus G3BP1/2-deficient backgrounds when asking whether SGs protect cells from death.</li><li>For live-cell analysis, align SG onset with later cytotoxicity at the single-cell level to test whether early SG formation predicts survival.</li></ul></div>
-      <div class="section"><h3>Experiment idea</h3><p>For one strong drug-induced SG condition, quantify SG onset, Cytotox positivity and translation inhibition over time, then add p-AMPK/p-4EBP1 endpoint measurements. If SG-positive cells systematically die later or survive longer than SG-negative cells, compare that relationship with the PARP1-driven model.</p></div>
-      <a href="https://pubmed.ncbi.nlm.nih.gov/42524886/" target="_blank" rel="noreferrer">Open paper →</a>
-      <div class="tags"><span class="tag">#StressGranule</span><span class="tag">#Translation</span><span class="tag">#PARP1</span><span class="tag">#mTORC1</span><span class="tag">#CellDeath</span></div>
-    </article>
+<section class="page" id="review">
+  <div class="top"><div><div class="eyebrow">End-of-week reflection</div><h1>Weekly Review</h1><div class="muted">Five short answers. This becomes the readable history of your PhD.</div></div><button class="btn primary" id="saveReview">Save review</button></div>
+  <div class="grid review">
+    <div class="card span6"><h2>1. What did I finish?</h2><textarea id="rFinish" class="note"></textarea></div>
+    <div class="card span6"><h2>2. Most important result</h2><textarea id="rResult" class="note"></textarea></div>
+    <div class="card span6"><h2>3. What didn't work?</h2><textarea id="rFailed" class="note"></textarea></div>
+    <div class="card span6"><h2>4. What did I learn?</h2><textarea id="rLearn" class="note"></textarea></div>
+    <div class="card span12"><h2>5. What should I do next week?</h2><textarea id="rNext" class="note" style="min-height:100px"></textarea></div>
+    <div class="card span12"><h2>Review history</h2><div id="reviewHistory"></div></div>
+  </div>
+</section>
 
-    <article class="paper" id="paper-pmid-41735331" data-paper-id="pmid-41735331" data-date="2026-08-24" data-topics="ribosome translation drug">
-      <div class="meta">Nature Communications · 2026 · Diamond et al.</div>
-      <h2>Context-dependent translation inhibition as a cancer therapeutic modality</h2>
-      <div class="score">Relevance to your PhD: 9.6/10</div>
-      <div class="actions">
-        <label class="check"><input type="checkbox" data-state="read"> ✓ Read</label>
-        <label class="check pub"><input type="checkbox" data-state="publication"> ⭐ Useful for publication</label>
-      </div>
-      <div class="section"><h3>Main question</h3><p>Can small molecules be designed to bind the human ribosomal peptidyl-transferase center and inhibit translation only in particular nascent-chain sequence contexts, rather than indiscriminately blocking protein synthesis?</p></div>
-      <div class="section"><h3>Problem solved</h3><p>Human translation inhibitors are potentially powerful anticancer agents but broad inhibition creates toxicity. Context-dependent inhibition was known for some bacterial ribosome-targeting antibiotics but had not been established as a designed therapeutic strategy for the human ribosome.</p></div>
-      <div class="section"><h3>Key findings</h3><p>The authors designed PTC-binding compounds called interdictors whose interactions depend on the nascent peptide sequence. Ribosome profiling identified drug-specific pause signatures, and cryo-EM captured interactions among compound, nascent chain and rRNA. Different inhibitors produced different effects on ribosome-surveillance pathways including the ribotoxic stress response, and an optimized compound showed antitumor activity in a triple-negative breast-cancer xenograft model.</p></div>
-      <div class="section"><h3>Why it matters to your research</h3><p>This paper is directly relevant to a screen of ribosome-targeting and anticancer drugs because it shows that 'translation inhibition' is not a single mechanism: two compounds binding the same functional region can create different stall contexts and different downstream ribosome-stress responses. That could help explain why drugs with similar effects on protein synthesis do not necessarily produce the same SG phenotype.</p></div>
-      <div class="section"><h3>What you can learn / use</h3><ul><li>Ribosome profiling can distinguish global translation loss from sequence-specific elongation stalls.</li><li>Use anisomycin or another characterized PTC inhibitor as a mechanistic comparator when appropriate.</li><li>Pair translation measurements with RSR/collision markers rather than assuming every inhibitor activates the same surveillance pathway.</li><li>Cryo-EM structures provide a way to connect drug-binding mode to pausing and downstream phenotype.</li></ul></div>
-      <div class="section"><h3>Experiment idea</h3><p>Take two drugs from your screen that produce similar bulk puromycin inhibition but very different SG responses. Compare SG formation with ribosome-collision/RSR markers; if they diverge, it would support the idea that the type of elongation stall, not simply the amount of translation inhibition, determines the stress response.</p></div>
-      <a href="https://pubmed.ncbi.nlm.nih.gov/41735331/" target="_blank" rel="noreferrer">Open paper →</a>
-      <div class="tags"><span class="tag">#Ribosome</span><span class="tag">#Translation</span><span class="tag">#DrugMechanism</span><span class="tag">#RibosomeProfiling</span><span class="tag">#CryoEM</span><span class="tag">#RSR</span></div>
-    </article>
-
-    <div class="day-heading" data-day="2026-08-23">23 August 2026</div>
-
-    <article class="paper" id="paper-pmid-41042876" data-paper-id="pmid-41042876" data-date="2026-08-23" data-topics="stress-granules ribosome translation clem">
-      <div class="meta">Science Advances · 2025 · Wu et al.</div>
-      <h2>Translation landscape of stress granules</h2>
-      <div class="score">Relevance to your PhD: 10/10</div>
-      <div class="actions">
-        <label class="check"><input type="checkbox" data-state="read"> ✓ Read</label>
-        <label class="check pub"><input type="checkbox" data-state="publication"> ⭐ Useful for publication</label>
-      </div>
-      <div class="section"><h3>Main question</h3><p>What is the spatial organization and translational state of ribosomal machinery inside stress granules in intact cells?</p></div>
-      <div class="section"><h3>Problem solved</h3><p>Stress granules are linked to translational control, but conventional microscopy cannot directly resolve ribosomal complexes inside granules in their native three-dimensional environment.</p></div>
-      <div class="section"><h3>Key findings</h3><p>The study used cryogenic correlative light and electron microscopy plus tomography to quantify translational machinery inside stress granules. The results suggest that stress granules have limited impact on global translation regulation but may protect small ribosomal subunits and pre-initiation complexes from degradation.</p></div>
-      <div class="section"><h3>Why it matters to your research</h3><p>This directly connects stress granules, ribosomes, translation and cryo-CLEM. It is especially useful for thinking about whether drug-induced granules contain canonical 40S/pre-initiation machinery or an unusual ribosome composition.</p></div>
-      <div class="section"><h3>What you can learn / use</h3><ul><li>Cryo-CLEM targeting strategy for stress granules.</li><li>Tomographic analysis of ribosomal particles inside versus outside granules.</li><li>A framework for comparing SG composition rather than scoring only SG-positive cells.</li><li>Useful conceptual control for 40S versus 60S enrichment.</li></ul></div>
-      <div class="section"><h3>Experiment idea</h3><p>For drug-induced SGs with strong RPL7 enrichment, compare canonical arsenite SGs with the drug condition using both a 40S marker and a 60S marker, then ask whether the ribosomal composition predicts translation inhibition.</p></div>
-      <a href="https://pubmed.ncbi.nlm.nih.gov/41042876/" target="_blank" rel="noreferrer">Open paper →</a>
-      <div class="tags"><span class="tag">#StressGranule</span><span class="tag">#Ribosome</span><span class="tag">#Translation</span><span class="tag">#CryoCLEM</span></div>
-    </article>
-
-    <article class="paper" id="paper-doi-s41467-025-67979-9" data-paper-id="doi-s41467-025-67979-9" data-date="2026-08-23" data-topics="ribosome ribosome-biogenesis drug">
-      <div class="meta">Nature Communications · 2025 · Tanaka et al.</div>
-      <h2>Ribosome biogenesis as a potential therapeutic target in KRAS mutant colorectal cancer</h2>
-      <div class="score">Relevance to your PhD: 8.5/10</div>
-      <div class="actions">
-        <label class="check"><input type="checkbox" data-state="read"> ✓ Read</label>
-        <label class="check pub"><input type="checkbox" data-state="publication"> ⭐ Useful for publication</label>
-      </div>
-      <div class="section"><h3>Main question</h3><p>Do cancer cells become dependent on ribosome biogenesis as an adaptive response to KRAS-pathway inhibition?</p></div>
-      <div class="section"><h3>Problem solved</h3><p>Resistance and tolerance to targeted KRAS-pathway therapies remain major problems, and the adaptive cellular state supporting survival is incompletely understood.</p></div>
-      <div class="section"><h3>Key findings</h3><p>KRAS-pathway inhibition induced a state with enhanced ribosome-biogenesis gene expression in a subset of colorectal cancer cells. These cells became vulnerable to RNA polymerase I inhibition, supporting ribosome biogenesis as a therapeutically exploitable dependency.</p></div>
-      <div class="section"><h3>Why it matters to your research</h3><p>It connects anticancer treatment with induced dependence on ribosome production and gives you a useful framework for studying drugs that perturb nucleolar function or ribosome synthesis.</p></div>
-      <div class="section"><h3>What you can learn / use</h3><ul><li>Think about ribosome biogenesis as an adaptive drug-response state, not only a constitutive cancer phenotype.</li><li>Use nucleolar/ribosome-biogenesis markers alongside cell-stress and translation readouts.</li><li>Consider combination-treatment logic: pathway inhibition plus ribosome-biogenesis inhibition.</li></ul></div>
-      <div class="section"><h3>Experiment idea</h3><p>For your strongest SG-inducing anticancer drugs, ask whether nucleolar morphology or NPM1 localization changes together with SG formation and whether this correlates with translation inhibition.</p></div>
-      <a href="https://www.nature.com/articles/s41467-025-67979-9" target="_blank" rel="noreferrer">Open paper →</a>
-      <div class="tags"><span class="tag">#RibosomeBiogenesis</span><span class="tag">#Cancer</span><span class="tag">#DrugMechanism</span></div>
-    </article>
-  </main>
-
-  <div class="empty" id="empty">No papers match this view yet.</div>
-</div>
+<input type="file" id="importFile" accept="application/json" hidden>
+</main></div>
 <script>
-const papers=[...document.querySelectorAll('.paper')];
-const views=[...document.querySelectorAll('.view')];
-const filters=[...document.querySelectorAll('.filter')];
-let activeView='today', activeTopic='all';
-const latestDate=Math.max(...papers.map(p=>new Date(p.dataset.date).getTime()));
-const latestDateStr=new Date(latestDate).toISOString().slice(0,10);
-
-function key(id,state){return `phd-papers:${id}:${state}`}
-function restore(){
-  papers.forEach(p=>{
-    const id=p.dataset.paperId;
-    ['read','publication'].forEach(state=>{
-      const box=p.querySelector(`input[data-state="${state}"]`);
-      box.checked=localStorage.getItem(key(id,state))==='1';
-    });
-    paint(p);
-  });
-}
-function paint(p){
-  p.classList.toggle('read',p.querySelector('[data-state="read"]').checked);
-  p.classList.toggle('saved',p.querySelector('[data-state="publication"]').checked);
-}
-function apply(){
-  let shown=0;
-  papers.forEach(p=>{
-    const read=p.querySelector('[data-state="read"]').checked;
-    const saved=p.querySelector('[data-state="publication"]').checked;
-    const topicOK=activeTopic==='all'||p.dataset.topics.split(' ').includes(activeTopic);
-    let viewOK=true;
-    if(activeView==='today') viewOK=p.dataset.date===latestDateStr;
-    if(activeView==='saved') viewOK=saved;
-    if(activeView==='unread') viewOK=!read;
-    if(activeView==='archive') viewOK=true;
-    const yes=topicOK&&viewOK;
-    p.style.display=yes?'block':'none'; if(yes) shown++;
-  });
-  document.querySelectorAll('.day-heading').forEach(h=>{
-    const any=[...document.querySelectorAll(`.paper[data-date="${h.dataset.day}"]`)].some(p=>p.style.display!=='none');
-    h.style.display=any?'block':'none';
-  });
-  document.getElementById('empty').style.display=shown?'none':'block';
-}
-
-document.addEventListener('change',e=>{
-  if(!e.target.matches('input[data-state]')) return;
-  const p=e.target.closest('.paper'),id=p.dataset.paperId,state=e.target.dataset.state;
-  localStorage.setItem(key(id,state),e.target.checked?'1':'0');paint(p);apply();
-});
-views.forEach(b=>b.addEventListener('click',()=>{views.forEach(x=>x.classList.remove('active'));b.classList.add('active');activeView=b.dataset.view;apply()}));
-filters.forEach(b=>b.addEventListener('click',()=>{filters.forEach(x=>x.classList.remove('active'));b.classList.add('active');activeTopic=b.dataset.topic;apply()}));
-restore();apply();
+const KEY='phd-workbench-v1';
+const now=new Date();
+const localDate=()=>{const d=new Date();d.setMinutes(d.getMinutes()-d.getTimezoneOffset());return d.toISOString().slice(0,10)};
+const fmt=d=>new Date(d+'T12:00:00').toLocaleDateString(undefined,{day:'numeric',month:'short',year:'numeric'});
+function mondayOf(d=new Date()){const x=new Date(d);const day=(x.getDay()+6)%7;x.setDate(x.getDate()-day);x.setHours(12,0,0,0);return x}
+function iso(d){const x=new Date(d);x.setMinutes(x.getMinutes()-x.getTimezoneOffset());return x.toISOString().slice(0,10)}
+function weekKey(){return iso(mondayOf())}
+const defaultData={
+ daily:{},
+ week:{}, weeks:[], experiments:[], reviews:[],
+ papers:[
+  {id:'pmid-42524886',date:'2026-08-24',journal:'Journal of Cell Biology · 2026',title:'PARP1 hyperactivity stalls translation and triggers stress granule formation following DNA damage',relevance:'9.8/10',topics:['Stress granules','Translation','Cell death'],why:'Mechanistic comparison for eIF2α-independent SG formation and a direct link between SGs and cell survival.',url:'https://pubmed.ncbi.nlm.nih.gov/42524886/',read:false,thesis:false},
+  {id:'pmid-41735331',date:'2026-08-24',journal:'Nature Communications · 2026',title:'Context-dependent translation inhibition as a cancer therapeutic modality',relevance:'9.6/10',topics:['Ribosome','Translation','Drug mechanism'],why:'Shows why similar translation inhibition can create different ribosome-stress responses and potentially different SG phenotypes.',url:'https://pubmed.ncbi.nlm.nih.gov/41735331/',read:false,thesis:false},
+  {id:'pmid-41042876',date:'2026-08-23',journal:'Science Advances · 2025',title:'Translation landscape of stress granules',relevance:'10/10',topics:['Stress granules','Ribosome','Cryo-CLEM'],why:'Directly connects SGs, ribosomes, translation and cryo-electron tomography in intact cells.',url:'https://pubmed.ncbi.nlm.nih.gov/41042876/',read:false,thesis:false},
+  {id:'doi-s41467-025-67979-9',date:'2026-08-23',journal:'Nature Communications · 2025',title:'Ribosome biogenesis as a potential therapeutic target in KRAS mutant colorectal cancer',relevance:'8.5/10',topics:['Ribosome biogenesis','Cancer','Drugs'],why:'Useful background for thinking about ribosome-biogenesis dependence as a drug-induced cellular state.',url:'https://doi.org/10.1038/s41467-025-67979-9',read:false,thesis:false}
+ ]
+};
+let data=load(), editingId=null;
+function load(){try{const v=JSON.parse(localStorage.getItem(KEY));return v?Object.assign(structuredClone(defaultData),v):structuredClone(defaultData)}catch(e){return structuredClone(defaultData)}}
+function save(){localStorage.setItem(KEY,JSON.stringify(data));renderProgress()}
+function daily(){const k=localDate();if(!data.daily[k])data.daily[k]={goal:'',notes:'',learned:'',problem:'',tasks:[{text:'',done:false},{text:'',done:false},{text:'',done:false}]};return data.daily[k]}
+function week(){const k=weekKey();if(!data.week[k])data.week[k]={question:'',why:'',tasks:[{text:'',done:false},{text:'',done:false},{text:'',done:false}],days:{Mon:'',Tue:'',Wed:'',Thu:'',Fri:''}};return data.week[k]}
+function bindText(id,obj,key){const el=document.getElementById(id);el.value=obj[key]||'';el.oninput=()=>{obj[key]=el.value;save()}}
+function renderNav(){document.querySelectorAll('.nav button').forEach(b=>b.onclick=()=>showPage(b.dataset.page));document.querySelectorAll('[data-jump]').forEach(b=>b.onclick=()=>showPage(b.dataset.jump))}
+function showPage(id){document.querySelectorAll('.page').forEach(p=>p.classList.toggle('active',p.id===id));document.querySelectorAll('.nav button').forEach(b=>b.classList.toggle('active',b.dataset.page===id));window.scrollTo({top:0,behavior:'smooth'});if(id==='experiments')renderExperiments();if(id==='review')renderReviews()}
+function renderTasks(container,tasks){const box=document.getElementById(container);box.innerHTML='';tasks.forEach((t,i)=>{const r=document.createElement('div');r.className='task';r.innerHTML=`<input type="checkbox" ${t.done?'checked':''}><input type="text" value="${esc(t.text)}" placeholder="Add a task or outcome..."><button class="linkbtn" title="delete">×</button>`;r.children[0].onchange=e=>{t.done=e.target.checked;save()};r.children[1].oninput=e=>{t.text=e.target.value;save()};r.children[2].onclick=()=>{tasks.splice(i,1);save();renderTasks(container,tasks)};box.appendChild(r)})}
+function esc(s=''){return s.replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m]))}
+function renderToday(){const d=daily();document.getElementById('todayDate').textContent=new Date().toLocaleDateString(undefined,{weekday:'long',day:'numeric',month:'long',year:'numeric'});bindText('dailyGoal',d,'goal');bindText('dailyNotes',d,'notes');bindText('learnedToday',d,'learned');bindText('problemToday',d,'problem');renderTasks('dailyTasks',d.tasks);document.getElementById('addDailyTask').onclick=()=>{d.tasks.push({text:'',done:false});save();renderTasks('dailyTasks',d.tasks)};renderActive();renderTodayPaper();renderProgress()}
+function renderProgress(){const w=week();const tasks=[...w.tasks,...daily().tasks].filter(t=>t.text.trim());const done=tasks.filter(t=>t.done).length,p=tasks.length?Math.round(done/tasks.length*100):0;document.getElementById('weekPct').textContent=p+'%';document.getElementById('progressBar').style.width=p+'%';document.getElementById('progressText').textContent=`${done} of ${tasks.length} tasks completed`}
+function renderWeek(){const w=week(),m=mondayOf(),sun=new Date(m);sun.setDate(m.getDate()+6);document.getElementById('weekRange').textContent=`${fmt(iso(m))} – ${fmt(iso(sun))}`;bindText('weekQuestion',w,'question');bindText('weekWhy',w,'why');renderTasks('weekTasks',w.tasks);document.getElementById('addWeekTask').onclick=()=>{w.tasks.push({text:'',done:false});save();renderTasks('weekTasks',w.tasks)};const dp=document.getElementById('dayPlans');dp.innerHTML='';['Mon','Tue','Wed','Thu','Fri'].forEach(day=>{const c=document.createElement('div');c.className='card span4';c.style.boxShadow='none';c.innerHTML=`<h2>${day}</h2><textarea class="note" style="min-height:105px" placeholder="Experiments / analysis / reading...">${esc(w.days[day]||'')}</textarea>`;c.querySelector('textarea').oninput=e=>{w.days[day]=e.target.value;save()};dp.appendChild(c)});renderWeekArchive()}
+function renderWeekArchive(){const box=document.getElementById('weekArchive');if(!data.weeks.length){box.innerHTML='<div class="empty">No archived weeks yet. At the end of this week, archive it here.</div>';return}box.innerHTML=data.weeks.slice().reverse().map(w=>`<div class="paper"><div class="muted">Week of ${fmt(w.key)}</div><h3>${esc(w.question||'Untitled week')}</h3><div>${w.tasks.filter(x=>x.done).length}/${w.tasks.length} outcomes completed</div></div>`).join('')}
+function renderActive(){const box=document.getElementById('activeExperiments'),xs=data.experiments.filter(e=>['Running','Analysis','Planned'].includes(e.status)).slice(0,5);box.innerHTML=xs.length?xs.map(e=>`<div class="task"><span class="pill ${e.status==='Running'?'running':''}">${e.status}</span><div><b>${esc(e.id)}</b><br><span class="muted">${esc(e.title)}</span></div></div>`).join(''):'<div class="empty">No active experiments yet.</div>'}
+function nextExpId(date){const y=(date||localDate()).slice(0,4);const nums=data.experiments.filter(e=>e.id&&e.id.startsWith('EXP-'+y+'-')).map(e=>Number(e.id.split('-').pop())).filter(Number.isFinite);return `EXP-${y}-${String((nums.length?Math.max(...nums):0)+1).padStart(3,'0')}`}
+function renderExperiments(){const q=document.getElementById('expSearch').value.toLowerCase(),f=document.getElementById('expFilter').value;let xs=data.experiments.filter(e=>(f==='all'||e.status===f)&&JSON.stringify(e).toLowerCase().includes(q));const box=document.getElementById('experimentList');if(!xs.length){box.innerHTML='<div class="empty">No matching experiments. Create your first experiment and give it a searchable conclusion.</div>';return}box.innerHTML='<div class="table-wrap"><table><thead><tr><th>ID</th><th>Date</th><th>Experiment</th><th>Method</th><th>Status</th><th>Project</th><th></th></tr></thead><tbody>'+xs.slice().reverse().map(e=>`<tr><td><b>${esc(e.id)}</b></td><td>${esc(e.date)}</td><td>${esc(e.title)}</td><td>${esc(e.method)}</td><td><span class="pill ${e.status==='Done'?'done':e.status==='Problem'?'problem':'running'}">${esc(e.status)}</span></td><td>${esc(e.project)}</td><td><button class="linkbtn" onclick="openExp('${e.id}')">Open</button></td></tr><tr id="detail-${e.id}" class="exp-detail"><td colspan="7"><b>Question:</b> ${esc(e.question)}<br><br><b>Conditions:</b> ${esc(e.conditions)}<br><br><b>Result:</b> ${esc(e.result)}<br><br><b>Conclusion / next:</b> ${esc(e.conclusion)}<br><br><b>Files:</b> ${esc(e.files)}<div class="row" style="margin-top:12px"><button class="btn small" onclick="editExp('${e.id}')">Edit</button><button class="btn small danger" onclick="deleteExp('${e.id}')">Delete</button></div></td></tr>`).join('')+'</tbody></table></div>'}
+window.openExp=id=>document.getElementById('detail-'+id).classList.toggle('open');
+window.editExp=id=>{const e=data.experiments.find(x=>x.id===id);editingId=id;fillExp(e);document.getElementById('experimentForm').style.display='block';document.getElementById('expFormTitle').textContent='Edit '+id;document.getElementById('experimentForm').scrollIntoView({behavior:'smooth'})};
+window.deleteExp=id=>{if(confirm('Delete '+id+'?')){data.experiments=data.experiments.filter(x=>x.id!==id);save();renderExperiments();renderActive()}};
+function fillExp(e={}){['Title','Date','Status','Project','Method','Cells','Question','Conditions','Result','Conclusion','Files'].forEach(k=>document.getElementById('e'+k).value=e[k.toLowerCase()]||'');if(!e.date)document.getElementById('eDate').value=localDate();if(!e.status)document.getElementById('eStatus').value='Planned'}
+function experimentEvents(){document.getElementById('newExperiment').onclick=()=>{editingId=null;fillExp();document.getElementById('experimentForm').style.display='block';document.getElementById('expFormTitle').textContent='New experiment'};document.getElementById('cancelExperiment').onclick=()=>document.getElementById('experimentForm').style.display='none';document.getElementById('saveExperiment').onclick=()=>{const get=k=>document.getElementById('e'+k).value.trim();const e={title:get('Title'),date:get('Date'),status:get('Status'),project:get('Project'),method:get('Method'),cells:get('Cells'),question:get('Question'),conditions:get('Conditions'),result:get('Result'),conclusion:get('Conclusion'),files:get('Files')};if(!e.title){alert('Give the experiment a title first.');return}if(editingId){e.id=editingId;data.experiments[data.experiments.findIndex(x=>x.id===editingId)]=e}else{e.id=nextExpId(e.date);data.experiments.push(e)}save();document.getElementById('experimentForm').style.display='none';renderExperiments();renderActive()};document.getElementById('expSearch').oninput=renderExperiments;document.getElementById('expFilter').onchange=renderExperiments}
+function renderTodayPaper(){const box=document.getElementById('todayPaper');const p=data.papers.find(p=>p.date===localDate())||data.papers[0];box.innerHTML=`<div class="muted">${esc(p.journal)}</div><h3 style="line-height:1.4">${esc(p.title)}</h3><p class="muted">${esc(p.why)}</p><a href="${p.url}" target="_blank" style="color:var(--accent);font-weight:750;text-decoration:none">Open paper →</a>`}
+function renderPapers(){const box=document.getElementById('paperList');box.innerHTML=data.papers.map((p,i)=>`<div class="paper"><div class="muted">${fmt(p.date)} · ${esc(p.journal)} · relevance ${esc(p.relevance)}</div><h3>${esc(p.title)}</h3><p>${esc(p.why)}</p><div>${p.topics.map(t=>`<span class="tag">${esc(t)}</span>`).join('')}</div><div class="paper-actions"><label><input type="checkbox" data-paper="${i}" data-field="read" ${p.read?'checked':''}> ✓ Read</label><label><input type="checkbox" data-paper="${i}" data-field="thesis" ${p.thesis?'checked':''}> ⭐ Thesis / publication</label><a href="${p.url}" target="_blank">Open →</a></div></div>`).join('');box.querySelectorAll('input').forEach(x=>x.onchange=e=>{const p=data.papers[+e.target.dataset.paper];p[e.target.dataset.field]=e.target.checked;save()})}
+function renderReviews(){const box=document.getElementById('reviewHistory');if(!data.reviews.length){box.innerHTML='<div class="empty">Your first saved review will appear here.</div>';return}box.innerHTML=data.reviews.slice().reverse().map(r=>`<div class="paper"><div class="muted">Week of ${fmt(r.week)}</div><h3>${esc(r.result||'Weekly review')}</h3><p><b>Finished:</b> ${esc(r.finish)}</p><p><b>Learned:</b> ${esc(r.learn)}</p><p><b>Next:</b> ${esc(r.next)}</p></div>`).join('')}
+function reviewEvents(){document.getElementById('saveReview').onclick=()=>{const r={week:weekKey(),finish:rFinish.value,result:rResult.value,failed:rFailed.value,learn:rLearn.value,next:rNext.value};const i=data.reviews.findIndex(x=>x.week===r.week);if(i>=0)data.reviews[i]=r;else data.reviews.push(r);save();renderReviews();alert('Weekly review saved.')}}
+function archiveEvents(){document.getElementById('archiveWeek').onclick=()=>{const w=week(),k=weekKey();const i=data.weeks.findIndex(x=>x.key===k),copy=JSON.parse(JSON.stringify({...w,key:k}));if(i>=0)data.weeks[i]=copy;else data.weeks.push(copy);save();renderWeekArchive();alert('This week is archived. You can keep editing the current week; archive again to update the snapshot.')}}
+function backupEvents(){document.getElementById('exportBtn').onclick=()=>{const blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'}),a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='phd-workbench-backup-'+localDate()+'.json';a.click();URL.revokeObjectURL(a.href)}}
+renderNav();renderToday();renderWeek();renderExperiments();renderPapers();renderReviews();experimentEvents();reviewEvents();archiveEvents();backupEvents();
 </script>
 </body>
 </html>
